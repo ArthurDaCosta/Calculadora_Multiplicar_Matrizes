@@ -1,5 +1,6 @@
 <?php
 
+$Repetir=true;
 $Coluna=null;
 $Linha=null;
 $Matriz=[];
