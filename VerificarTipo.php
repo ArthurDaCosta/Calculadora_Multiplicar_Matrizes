@@ -1,7 +1,7 @@
 <?php
 
-function VerificarTipoMatriz(int $Linha, int $Coluna) {
-    if ($Linha === $Coluna){
+function VerificarTipoMatriz(int $linha, int $coluna) {
+    if ($linha === $coluna){
         return 'quadrada';
     } else{
         return 'retangular';

@@ -1,53 +1,52 @@
 <?php
 
-require_once __DIR__ ."/variables.php";
-require_once __DIR__ ."/constants.php";
-require_once __DIR__ ."/matrizesStart.php";
-require_once __DIR__ ."/VerificarTipo.php";
-require_once __DIR__ ."/calcQuad.php";
-require_once __DIR__ ."/calcNQuad.php";
-require_once __DIR__ ."/printMatriz.php";
-require_once __DIR__ ."/repetirCalculo.php";
+require_once __DIR__ . "/variables.php";
+require_once __DIR__ . "/matrizesStart.php";
+require_once __DIR__ . "/VerificarTipo.php";
+require_once __DIR__ . "/calcQuad.php";
+require_once __DIR__ . "/calcNQuad.php";
+require_once __DIR__ . "/printMatriz.php";
+require_once __DIR__ . "/repetirCalculo.php";
 
-do{
+do {
     echo "\n";
-    $Linha = (int) readline (" Qual a Quantidade de Linhas da Matriz 1: ");
-    $Coluna = (int) readline (" Qual a Quantidade de Colunas da Matriz 1: ");
-    if($Linha<=0||$Coluna<=0){
+    $linha = (int) readline(" Qual a Quantidade de Linhas da Matriz 1: ");
+    $coluna = (int) readline(" Qual a Quantidade de Colunas da Matriz 1: ");
+
+    if ($linha <= 0 || $coluna <= 0) {
         echo "\n -- Valor Inválido --";
-        echo "\n -- Reiniciando... -- \n";
+        echo "\n -- Reiniciando -- \n";
         continue;
     }
+
     echo " Complete a Matriz 1: \n";
-    $Matriz1 = matrizesPreencher($Linha, $Coluna);
-    $TipoMatriz1 = VerificarTipoMatriz($Linha, $Coluna);
-
+    $matriz1 = matrizesPreencher($linha, $coluna);
+    $tipoMatriz1 = VerificarTipoMatriz($linha, $coluna);
     echo "\n";
-    $Linha = (int) readline (" Qual a Quantidade de Linhas da Matriz 2: ");
-    $Coluna = (int) readline (" Qual a Quantidade de Colunas da Matriz 2: ");
-    if($Linha<=0||$Coluna<=0){
-        echo "\n -- Valor Inválido --";
-        echo "\n -- Reiniciando... -- \n";
-        continue;
-    }
-    if(count($Matriz1[0])!=$Linha){
-        echo "\n -- Essas Matrizes Não Podem ser Multiplicadas. --";
-        echo "\n -- Reiniciando... -- \n";
-        continue;
-    }
-    echo " Complete a Matriz 2: \n";
-    $Matriz2 = matrizesPreencher($Linha, $Coluna);
-    $TipoMatriz2 = VerificarTipoMatriz($Linha, $Coluna);
+    $linha = (int) readline(" Qual a Quantidade de Linhas da Matriz 2: ");
+    $coluna = (int) readline(" Qual a Quantidade de Colunas da Matriz 2: ");
 
-    if ($TipoMatriz2!="quadrada"||$TipoMatriz2!="quadrada"){
-        $calculo = calculoMatrizNQuad($Matriz1, $Matriz2);
+    if ($linha <= 0 || $coluna <= 0) {
+        echo "\n -- Valor Inválido --";
+        echo "\n -- Reiniciando -- \n";
+        continue;
+    } elseif (count($matriz1[0]) != $linha) {
+        echo "\n -- Essas Matrizes Não Podem ser Multiplicadas. --";
+        echo "\n -- Reiniciando -- \n";
+        continue;
+    }
+
+    echo " Complete a Matriz 2: \n";
+    $matriz2 = matrizesPreencher($linha, $coluna);
+    $tipoMatriz2 = VerificarTipoMatriz($linha, $coluna);
+    if ($tipoMatriz2 != "quadrada" || $tipoMatriz2 != "quadrada") {
+        $calculo = calculoMatrizNQuad($matriz1, $matriz2);
         echo "\n Matriz Final após Multiplicação com Matriz Retangular: \n";
-    } else{
-        $calculo = calculoMatrizQuad($Matriz1, $Matriz2);
+    } else {
+        $calculo = calculoMatrizQuad($matriz1, $matriz2);
         echo "\n Matriz Final após Multiplicação de Matrizes Quadradas: \n";
     }
 
     printMatriz($calculo);
-    $Repetir=repetirCalculo();
-}while($Repetir==true);
-
+    $repetir = repetirCalculo();
+} while ($repetir == true);
