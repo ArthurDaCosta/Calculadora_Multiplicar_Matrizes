@@ -3,7 +3,6 @@
 require_once __DIR__ . "/variables.php";
 require_once __DIR__ . "/matrizesStart.php";
 require_once __DIR__ . "/VerificarTipo.php";
-require_once __DIR__ . "/calcQuad.php";
 require_once __DIR__ . "/calcNQuad.php";
 require_once __DIR__ . "/printMatriz.php";
 require_once __DIR__ . "/repetirCalculo.php";
@@ -43,7 +42,7 @@ do {
         $calculo = calculoMatrizNQuad($matriz1, $matriz2);
         echo "\n Matriz Final após Multiplicação com Matriz Retangular: \n";
     } else {
-        $calculo = calculoMatrizQuad($matriz1, $matriz2);
+        $calculo = calculoMatrizNQuad($matriz1, $matriz2);
         echo "\n Matriz Final após Multiplicação de Matrizes Quadradas: \n";
     }
 
